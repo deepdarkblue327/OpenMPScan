@@ -8,7 +8,7 @@
 
 template <typename T, typename Op>
 void omp_scan(int n, const T* in, T* out, Op op) {
-
+    
 } // omp_scan
 
 #endif // A0_HPP
