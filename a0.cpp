@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     omp_scan(n, in.data(), out_p.data(), std::plus<int>());
 
     auto t2 = std::chrono::system_clock::now();
-
+    std::cout<<out_p.data()<<std::endl;
     // test for correctness
     std::cout << "testing..." << std::endl;
     std::cout << ((out_s == out_p) ? "pass" : "fail") << std::endl;
