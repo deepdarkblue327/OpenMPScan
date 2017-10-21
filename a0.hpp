@@ -13,7 +13,8 @@ void omp_scan(int n, const T* in, T* out, Op op) {
     #pragma omp parallel
     {
         #pragma omp critical
-        std::cout<<omp_get_thread_num()<<" ";
+        std::cout<<omp_get_thread_num()<<"  ";
+
         //std::cout<<omp_get_num_threads();
     }
 
