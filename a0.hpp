@@ -9,6 +9,7 @@
 template <typename T, typename Op>
 
 void omp_scan(int n, const T* in, T* out, Op op) {
+    omp_set_num_threads(100);
     #pragma omp parallel
     {
         std::cout<<omp_get_num_threads()<<std::endl;
