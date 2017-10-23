@@ -13,8 +13,8 @@ void omp_scan(int n, const T* in, T* out, Op op) {
 
     omp_set_dynamic(true);
     omp_set_num_threads(omp_get_num_procs());
-    std::vector<T> y(n/2+1, 0);
-    std::vector<T> z(n/2+1, 0);
+    vector<T> y(n/2+1, 0);
+    vector<T> z(n/2+1, 0);
 
     out[0] = in[0];
     if(n == 1) {
