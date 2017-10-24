@@ -20,12 +20,12 @@ void omp_scan(int n, const T* in, T* out, Op op) {
     for(int i = 0; i < n; i+=parallel_chunk) {
         out[i] = in[i];
         for(int j = i+1; j < n && j < i+parallel_chunk ; j++) {
-            out[j] = out[j-1] + in[j];
+            out[j] = op(out[j-1], in[j]);
         }
     }
 
     for(int i = 2*parallel_chunk-1; i < n; i+=parallel_chunk) {
-        out[i] += out[i-parallel_chunk];
+        out[i] = op(out[i],out[i-parallel_chunk]);
     }
 
     #pragma omp parallel for
@@ -36,7 +36,7 @@ void omp_scan(int n, const T* in, T* out, Op op) {
         }
         #pragma omp parallel for
         for(int j = i; j < temp-1; j++) {
-            out[j] += out[i-1];
+            out[j] = op(out[j],out[i-1]);
         }
     }
 
